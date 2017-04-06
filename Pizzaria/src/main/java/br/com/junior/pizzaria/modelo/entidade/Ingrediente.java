@@ -1,6 +1,8 @@
 package br.com.junior.pizzaria.modelo.entidade;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +14,7 @@ import br.com.junior.pizzaria.modelo.enun.CategoriaIngrediente;
 
 @Entity
 public class Ingrediente {
-    
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -21,19 +23,11 @@ public class Ingrediente {
 	@NotEmpty
 	private String nome;
 	
-	@NotEmpty
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private CategoriaIngrediente categoria;
+
 	
-	public Ingrediente(Long id, String nome, CategoriaIngrediente categoria) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.categoria = categoria;
-	}
-
-	public Ingrediente() {
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -85,8 +79,6 @@ public class Ingrediente {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 	
 }
