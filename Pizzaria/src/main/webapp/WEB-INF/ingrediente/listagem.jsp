@@ -9,10 +9,15 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>${titulo}</title>
+	<c:set var="path" value="${pageContext.request.contextPath}"></c:set>
+	<style type="text/css">
+		@IMPORT url("${path}/static/bootstrap-3.3.6/css/bootstrap.min.css");
+		@IMPORT url("${path}/static/bootstrap-3.3.6/css/bootstrap-theme.min.css");
+	</style>
 	</head>
 	<body>
-		<section>
-		    <table>
+		<section class="container">
+		    <table class="table table-hover table-condensed table-striped table-bordered">
 		    	<thead>
 		    		<tr>
 		    			<td>ID</td>
