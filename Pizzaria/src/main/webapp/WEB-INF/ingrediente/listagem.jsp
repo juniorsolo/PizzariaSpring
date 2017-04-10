@@ -16,6 +16,16 @@
 	</style>
 	</head>
 	<body>
+	    <c:if test="${not empty mensagemErro}">
+	    	<div class="container">
+	    		<div class="alert alert-danger">${mensagemErro}</div>     
+	    	</div>
+	    </c:if>
+	    <c:if test="${not empty mensageminfo}">
+	    	<div class="container">
+	    		<div class="alert alert-info">${mensageminfo}</div>     
+	    	</div>
+	    </c:if>
 		<section class="container">
 		    <table class="table table-hover table-condensed table-striped table-bordered">
 		    	<thead>
@@ -37,9 +47,20 @@
 		    	<tfoot>
 		    		<tr>
 		    			<td colspan="3">Total de ingredientes: ${ingredientesLista.size()}</td>
+		    		</tr>
+		    		<tr>
+		    			<td colspan="3">
+		    				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-ingrediente">
+		    					Cadastrar Ingrediente
+		    				</button>
+		    			</td>
 		    		</tr>		    		
 		    	</tfoot>		    	
 		    </table>
 		</section>
+		<jsp:include page="modal-ingrediente.jsp" />
+		<script type="text/javascript" src="${path}/static/js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="${path}/static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+		
 	</body>
 </html>
