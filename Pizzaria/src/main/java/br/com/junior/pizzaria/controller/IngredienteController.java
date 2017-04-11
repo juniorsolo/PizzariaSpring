@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.junior.pizzaria.exception.IngredienteInvalidException;
@@ -20,10 +22,8 @@ import br.com.junior.pizzaria.modelo.entidade.Ingrediente;
 import br.com.junior.pizzaria.modelo.enun.CategoriaIngrediente;
 import br.com.junior.pizzaria.modelo.repositorio.IngredienteRepositorio;
 
-// Metodo GET lista os ingredientes
-// Metodo POST salva o ingrediente
-
 @Controller
+//@RestController  Todos os metodos ficam responseBody
 @RequestMapping("/ingredientes")
 public class IngredienteController {
 	
@@ -67,7 +67,12 @@ public class IngredienteController {
 		}
 	}
 	
-	
+	@RequestMapping(method=RequestMethod.GET, value="/{id}")
+	@ResponseBody
+	public Ingrediente buscarIngrediente(@PathVariable Long id){
+		Ingrediente ingrediente = ingredienteRepo.findOne(id);
+		return ingrediente;
+	}
 	
 	
 	
