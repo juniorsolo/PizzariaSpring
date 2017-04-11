@@ -28,7 +28,7 @@
 	    	</div>
 	    </c:if>
 	    
-		<section class="container">
+		<section class="container" id="sessao-ingredientes">
 		    <jsp:include page="tabela-ingredientes.jsp" />
 		</section>
 		
@@ -36,6 +36,7 @@
 		
 		<script type="text/javascript" src="${path}/static/js/jquery-2.2.3.min.js"></script>
 		<script type="text/javascript" src="${path}/static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${path}/static/js/ingredientes.js"></script>
 		
 	</body>
 </html>

@@ -28,7 +28,7 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
+				<button id="salvar-ingredientes" type="button" class="btn btn-primary" data-toggle="modal"
 					data-target="#modal-ingrediente">Cadastrar Ingrediente</button>
 			</td>
 		</tr>

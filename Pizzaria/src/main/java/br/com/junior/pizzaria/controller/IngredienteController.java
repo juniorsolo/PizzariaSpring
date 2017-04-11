@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.junior.pizzaria.exception.IngredienteInvalidException;
 import br.com.junior.pizzaria.modelo.entidade.Ingrediente;
 import br.com.junior.pizzaria.modelo.enun.CategoriaIngrediente;
 import br.com.junior.pizzaria.modelo.repositorio.IngredienteRepositorio;
+
+// Metodo GET lista os ingredientes
+// Metodo POST salva o ingrediente
 
 @Controller
 @RequestMapping("/ingredientes")
@@ -35,14 +39,18 @@ public class IngredienteController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String salvarIngrediente(@Valid @ModelAttribute Ingrediente ingrediente, BindingResult bindingResult, RedirectAttributes redirectAtributes){
+	public String salvarIngrediente(@Valid @ModelAttribute Ingrediente ingrediente, 
+			BindingResult bindingResult, 
+			Model model){
 		if(!bindingResult.hasErrors()){
 			ingredienteRepo.save(ingrediente);
-			redirectAtributes.addFlashAttribute("mensageminfo", "Ingrediente salvo com sucesso!");
+
 		}else{
-			FieldError error = bindingResult.getFieldErrors().get(0);
-			redirectAtributes.addFlashAttribute("mensagemErro", "Erro ao salvar: " + error.getField() +"  "+  error.getDefaultMessage());
+			throw new IngredienteInvalidException();
 		}
-		return "redirect:/app/ingredientes";
+		
+		model.addAttribute("ingredientesLista", ingredienteRepo.findAll());
+		model.addAttribute("categorias", CategoriaIngrediente.values());
+		return "ingrediente/tabela-ingredientes";
 	}
 }
