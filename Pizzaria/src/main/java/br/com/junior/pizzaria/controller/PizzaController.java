@@ -3,6 +3,8 @@ package br.com.junior.pizzaria.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,6 +49,16 @@ public class PizzaController {
 		model.addAttribute("pizzasLista", pizzaRepo.findAll());
 		
 		return"pizza/tabela-pizzas";
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
+	public ResponseEntity<String> deletarPizza(@PathVariable Long id){
+		try {
+			pizzaRepo.delete(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		} catch (Exception e) {
+			return  new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	public PizzaController() {

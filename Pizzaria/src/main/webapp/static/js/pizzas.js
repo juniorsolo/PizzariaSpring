@@ -17,7 +17,23 @@ var aplicarListeners = function() {
 	
 	$("#modal-pizza").on('hide.bs.modal', limparModal);
 	
-
+	//Deletando elementos da lista
+	$(".btn-deletar").on("click", function() {
+		var tr = $(this).parents('tr');
+		var id = tr.data('id');
+		var quantidade = $("#quantidade-pizzas").text();
+		
+		$.ajax({
+			url: "pizzas/"+id,
+			type:'DELETE',
+			success: function(result){
+				tr.remove();
+				$("#quantidade-pizzas").text(quantidade -1);
+			}
+		});
+		
+	});
+	
 	//Salvando elemento e atualizando lista
 	$("#btn-salvar").on("click", function() {
 
