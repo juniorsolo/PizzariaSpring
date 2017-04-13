@@ -17,6 +17,7 @@ var aplicarListeners = function() {
 	
 	$("#modal-pizza").on('hide.bs.modal', limparModal);
 	
+	
 	//Deletando elementos da lista
 	$(".btn-deletar").on("click", function() {
 		var tr = $(this).parents('tr');
