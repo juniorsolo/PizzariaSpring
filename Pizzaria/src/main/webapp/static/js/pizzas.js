@@ -6,6 +6,14 @@ $(document).ready(function() {
    aplicarListeners();
 });
 
+
+var removerListerners = function(){
+	$("#modal-pizza").off('hide.bs.modal', limparModal);
+	$(".btn-editar").off("click");
+	$(".btn-deletar").off("click");
+	$("#btn-salvar").off("click"); 
+}
+
 var limparModal = function(){
 	$("#id").val("");
 	$("#nome").val("");
@@ -17,6 +25,21 @@ var aplicarListeners = function() {
 	
 	$("#modal-pizza").on('hide.bs.modal', limparModal);
 	
+	// Buscando pizza
+	$(".btn-editar").on("click", function(){
+		var tr = $(this).parents('tr');
+		var id = tr.data('id');
+		var url = "pizzas/"+id;
+		
+		$.get(url).success(function(pizza){
+				$("#id").val(pizza.id);
+				$("#nome").val(pizza.nome);
+				$("#preco").val(pizza.preco);
+				$("#tamanho").val(pizza.tamanho);
+				$("#modal-pizza").modal('show');
+			
+		});
+	});
 	
 	//Deletando elementos da lista
 	$(".btn-deletar").on("click", function() {
@@ -43,6 +66,7 @@ var aplicarListeners = function() {
 
 		$.post(url, formPizza).done(function(pagina) {
 			$("#sessao-pizzas").html(pagina);
+			removerListerners();
 			aplicarListeners();
 
 		}).fail(function() {
