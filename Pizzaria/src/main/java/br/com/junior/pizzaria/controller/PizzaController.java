@@ -61,6 +61,12 @@ public class PizzaController {
 		}
 	}
 	
+	@RequestMapping(method=RequestMethod.GET, value="/{id}")
+	@ResponseBody
+	public Pizza  buscarPizza(@PathVariable Long id){
+		Pizza pizza = pizzaRepo.findOne(id);
+		return pizza;
+	}
 	public PizzaController() {
 		System.out.println("criando pizzas controller.....");
 	}
