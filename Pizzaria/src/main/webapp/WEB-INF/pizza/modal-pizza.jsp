@@ -19,13 +19,19 @@
 					<label for="nome">Nome: </label> <input id="nome" name="nome"class="form-control">
 					<label for="preco">Preço: </label> <input id="preco" name="preco"class="form-control"> 
 					<label for="tamanho">Categoria:</label> 
-						<select id="tamanho" name="tamanho" class="form-control">
-							<c:forEach items="${tamanho}" var="tamanho">
-								<option value="${tamanho}">${tamanho}</option>
-							</c:forEach>
-						</select> 
-						<input id="id" name="id" type="hidden"> 
-						<input id="csrf" name="_csrf" type="hidden" value="${_csrf.token}">
+					<select id="tamanho" name="tamanho" class="form-control">
+						<c:forEach items="${tamanho}" var="tamanho">
+							<option value="${tamanho}">${tamanho}</option>
+						</c:forEach>
+					</select> 
+					<label for="ingredientes">Ingredientes:</label> 
+					<select id="ingredientes" name="ingredientes" class="form-control" multiple="multiple">
+						<c:forEach items="${ingredientesLista}" var="ingrediente">
+							<option value="${ingrediente.id}">${ingrediente.nome}</option>
+						</c:forEach>
+					</select> 
+					<input id="id" name="id" type="hidden"> 
+					<input id="csrf" name="_csrf" type="hidden" value="${_csrf.token}">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

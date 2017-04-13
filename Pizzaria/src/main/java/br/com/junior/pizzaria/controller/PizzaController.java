@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.junior.pizzaria.exception.PizzaInvalidException;
+import br.com.junior.pizzaria.modelo.entidade.Ingrediente;
 import br.com.junior.pizzaria.modelo.entidade.Pizza;
 import br.com.junior.pizzaria.modelo.enun.TamanhoPizza;
+import br.com.junior.pizzaria.modelo.repositorio.IngredienteRepositorio;
 import br.com.junior.pizzaria.modelo.repositorio.PizzaRepositorio;
+import br.com.junior.pizzaria.propertyeditor.IngredientePropertyEditor;
 
 @Controller
 @RequestMapping("/pizzas")
@@ -25,12 +30,19 @@ public class PizzaController {
 
 	@Autowired
 	private PizzaRepositorio pizzaRepo;
-
+    
+	@Autowired
+	private IngredienteRepositorio ingredienteRepo;
+	
+	@Autowired
+	private IngredientePropertyEditor ingredientePropertyEditor;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String listarPizzas(Model model) {
 
 		model.addAttribute("tamanho", TamanhoPizza.values());
 		model.addAttribute("pizzasLista", pizzaRepo.findAll());
+		model.addAttribute("ingredientesLista", ingredienteRepo.findAll());
 
 		return "pizza/listagem";
 	}
@@ -67,6 +79,13 @@ public class PizzaController {
 		Pizza pizza = pizzaRepo.findOne(id);
 		return pizza;
 	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder webDataBinder){
+		webDataBinder.registerCustomEditor(Ingrediente.class, ingredientePropertyEditor);
+	}
+	
+	
 	public PizzaController() {
 		System.out.println("criando pizzas controller.....");
 	}
