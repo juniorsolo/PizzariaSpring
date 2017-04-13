@@ -12,6 +12,13 @@ var limparModal = function(){
 	$("#categoria").val("");
 }
 
+var removerListerners = function(){
+	$("#modal-ingrediente").off('hide.bs.modal', limparModal);
+	$(".btn-editar").off("click");
+	$(".btn-deletar").off("click");
+	$("#btn-salvar").off("click"); 
+}
+
 var aplicarListeners = function() {
 	
 	$("#modal-ingrediente").on('hide.bs.modal', limparModal);
@@ -57,6 +64,7 @@ var aplicarListeners = function() {
 
 		$.post(url, formIngrediente).done(function(pagina) {
 			$("#sessao-ingredientes").html(pagina);
+			removerListerners();
 			aplicarListeners();
 
 		}).fail(function() {
