@@ -5,13 +5,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<fmt:setLocale value="pt_BR" />
 <table class="table table-hover table-condensed table-striped table-bordered">
 	<thead>
 		<tr>
 			<td style="width:10%">#</td>
-			<td style="width:50%">Nome</td>
+			<td style="width:20%">Nome</td>
 			<td style="width:10%">preco</td>
 			<td style="width:10%">Tamanho</td>
+			<td style="width:30%">Ingredientes</td>
 			<td style="width:10%">Editar</td>
 			<td style="width:10%">Deletar</td>
 		</tr>
@@ -21,8 +23,11 @@
 			<tr data-id="${pizza.id}">
 				<td>${pizza.id}</td>
 				<td>${pizza.nome}</td>
-				<td>${pizza.preco}</td>
+				<td>					
+					<fmt:formatNumber value="${pizza.preco}" type="currency"/>					
+				</td>
 				<td>${pizza.tamanho}</td>
+				<td>${pizza.ingredientes}</td>
 				<td style="text-align: center;"><button class="btn btn-warning btn-editar" >Editar</button></td>
 				<td  style="text-align: center;"><button class="btn btn-danger btn-deletar">Deletar</button></td>
 			</tr>
@@ -30,10 +35,10 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="6">Total de pizzas: <span id="quantidade-pizzas">${pizzasLista.size()}</span></td>
+			<td colspan="7">Total de pizzas: <span id="quantidade-pizzas">${pizzasLista.size()}</span></td>
 		</tr>
 		<tr>
-			<td colspan="6">
+			<td colspan="7">
 				<button id="salvar-pizza" type="button" class="btn btn-primary" data-toggle="modal"
 					data-target="#modal-pizza">Cadastrar Pizza</button>
 			</td>
