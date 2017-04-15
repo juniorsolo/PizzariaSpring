@@ -7,14 +7,6 @@ $(document).ready(function() {
    salvarListerner();
 });
 
-
-var removerListerners = function(){
-	$("#modal-pizza").off('hide.bs.modal', limparModal);
-	$(".btn-editar").off("click");
-	$(".btn-deletar").off("click");
-	$("#btn-salvar").off("click"); 
-}
-
 var limparModal = function(){
 	$("#id").val("");
 	$("#nome").val("");
