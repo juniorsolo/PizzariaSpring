@@ -4,6 +4,7 @@
 
 $(document).ready(function() {
    aplicarListeners();
+   salvarListerner();
 });
 
 
@@ -57,7 +58,10 @@ var aplicarListeners = function() {
 		});
 		
 	});
-	
+		
+}
+
+var salvarListerner(){
 	//Salvando elemento e atualizando lista
 	$("#btn-salvar").on("click", function() {
 
@@ -66,7 +70,6 @@ var aplicarListeners = function() {
 
 		$.post(url, formPizza).done(function(pagina) {
 			$("#sessao-pizzas").html(pagina);
-			removerListerners();
 			aplicarListeners();
 
 		}).fail(function() {
@@ -77,6 +80,4 @@ var aplicarListeners = function() {
 		});
 
 	});
-
-	
 }
