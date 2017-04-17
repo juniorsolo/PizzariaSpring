@@ -4,6 +4,7 @@
 
 $(document).ready(function() {
    aplicarListeners();
+   //Chamda somente uma vez,  para nao dar over listener
    salvarListerner();
 });
 
