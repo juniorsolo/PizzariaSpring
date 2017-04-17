@@ -19,7 +19,18 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 		.antMatchers("/app/pizzas/**","/app/ingredientes/**")
 		.hasRole("PIZZARIA").anyRequest().permitAll()
-		.and().httpBasic();
+		.and()
+			.formLogin()
+				.loginPage("/login.jsp")
+				.usernameParameter("usuario")
+				.passwordParameter("senha")
+				.loginProcessingUrl("/autenticar")
+				.defaultSuccessUrl("/app/pizzas")
+				.failureUrl("/login.jsp?semacesso=true")
+		.and()
+			.logout()
+				.logoutUrl("/sair")
+				.logoutSuccessUrl("/login.jsp?saiu=true");
 		
 	}
 }
