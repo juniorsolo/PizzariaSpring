@@ -54,7 +54,7 @@ var aplicarListeners = function() {
 		
 }
 
-var salvarListerner(){
+var salvarListerner = function(){
 	//Salvando elemento e atualizando lista
 	$("#btn-salvar").on("click", function() {
 
