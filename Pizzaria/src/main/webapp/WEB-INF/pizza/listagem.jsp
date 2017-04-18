@@ -16,13 +16,14 @@
 	</style>
 	</head>
 	<body>
-	    
-		<section class="container" id="sessao-pizzas">
-		    <jsp:include page="tabela-pizzas.jsp" />
-		</section>
-		
-		<jsp:include page="modal-pizza.jsp" />
-		
+		<div class="container">
+		    <jsp:include page="../menu.jsp"></jsp:include>
+			<section id="sessao-pizzas">
+			    <jsp:include page="tabela-pizzas.jsp" />
+			</section>
+			
+			<jsp:include page="modal-pizza.jsp" />
+		</div>
 		<script type="text/javascript" src="${path}/static/js/jquery-2.2.3.min.js"></script>
 		<script type="text/javascript" src="${path}/static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="${path}/static/js/pizzas.js"></script>
