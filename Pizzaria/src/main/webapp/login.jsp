@@ -13,6 +13,14 @@
 	<style type="text/css">
 		@IMPORT url("${path}/static/bootstrap-3.3.6/css/bootstrap.min.css");
 		@IMPORT url("${path}/static/bootstrap-3.3.6/css/bootstrap-theme.min.css");
+		
+		#login{
+			width:400px;
+			margin:100px auto 5px auto;
+		}
+		#btn-login{
+			width:100%;
+		}
 	</style>
 	</head>
 	<body>
@@ -28,9 +36,12 @@
 			    	
 			    	<label for="senha"></label>
 			    	<input type="password" id="senha" name="senha" class="form-control">
-			    	
+			    </div>
+			    <div class="panel-footer">	
 			    	<button id="btn-login" class="btn btn-primary">Entrar</button>
 		    	</div>
+		    	
+		    	<input type="hidden" id="_csrf" name="_csrf" value="${_csrf.token}">
 	    	</form>
 	    </section>
 	    		
