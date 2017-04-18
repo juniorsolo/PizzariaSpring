@@ -46,7 +46,14 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 		
 	}
 	
+	
 	public BCryptPasswordEncoder encoder(){
 		return new BCryptPasswordEncoder();
+	}
+	
+	public ConfiguracaoSeguranca(){
+		BCryptPasswordEncoder bcript = new BCryptPasswordEncoder();
+		
+		System.out.println("encript:   " + bcript.encode("admin"));
 	}
 }
