@@ -44,10 +44,12 @@ var aplicarListeners = function() {
 		var tr = $(this).parents('tr');
 		var id = tr.data('id');
 		var quantidade = $("#quantidade-ingredientes").text();
+		var csrf = $("#csrf").val();
 		
 		$.ajax({
 			url: "ingredientes/"+id,
 			type:'DELETE',
+			headers: {"X-CSRF-TOKEN":csrf},
 			success: function(result){
 				tr.remove();
 				$("#quantidade-ingredientes").text(quantidade -1);
