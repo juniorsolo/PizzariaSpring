@@ -29,21 +29,21 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">Pizzaria</a>
+	      <a class="navbar-brand" href="#"><spring:message code="view.menu.pizzaria" /></a>
 	    </div>
 	
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-				<li><a href="pizzas">Pizzas</a></li>
-				<li><a href="ingredientes">Ingredientes</a></li>				
+				<li><a href="pizzas"><spring:message code="view.menu.pizzas" /></a></li>
+				<li><a href="ingredientes"><spring:message code="view.menu.ingredientes" /></a></li>				
 	      </ul>
 
 	      <ul class="nav navbar-nav navbar-right">
 	        <li>
 				<form action="${path}/sair" method="post">
 					<input type="hidden" name="_csrf" value="${_csrf.token}">
-					<button id="btn-sair" type="submit" class="btn btn-default">Sair da aplicação</button>
+					<button id="btn-sair" type="submit" class="btn btn-default"><spring:message code="view.menu.sair"/></button>
 				</form>
 	        </li>
 	      </ul>
