@@ -10,12 +10,12 @@
 	<thead>
 		<tr>
 			<td style="width:10%">#</td>
-			<td style="width:20%">Nome</td>
-			<td style="width:10%">preco</td>
-			<td style="width:10%">Tamanho</td>
-			<td style="width:30%">Ingredientes</td>
-			<td style="width:10%">Editar</td>
-			<td style="width:10%">Deletar</td>
+			<td style="width:20%"><spring:message code="view.tabela.pizza.nome" /></td>
+			<td style="width:10%"><spring:message code="view.tabela.pizza.preco" /></td>
+			<td style="width:10%"><spring:message code="view.tabela.pizza.tamanho" /></td>
+			<td style="width:30%"><spring:message code="view.tabela.pizza.ingredientes"/></td>
+			<td style="width:10%"><spring:message code="view.tabela.pizza.editar"/></td>
+			<td style="width:10%"><spring:message code="view.tabela.pizza.deletar"/></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -32,19 +32,19 @@
 					    ${ingrediente.nome},
 					</c:forEach>
 				</td>
-				<td style="text-align: center;"><button class="btn btn-warning btn-editar" >Editar</button></td>
-				<td  style="text-align: center;"><button class="btn btn-danger btn-deletar">Deletar</button></td>
+				<td style="text-align: center;"><button class="btn btn-warning btn-editar"><spring:message code="view.tabela.pizza.editar"/></button></td>
+				<td style="text-align: center;"><button class="btn btn-danger btn-deletar"><spring:message code="view.tabela.pizza.deletar"/></button></td>
 			</tr>
 		</c:forEach>
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="7">Total de pizzas: <span id="quantidade-pizzas">${pizzasLista.size()}</span></td>
+			<td colspan="7"><spring:message code="view.tabela.pizza.total"/>: <span id="quantidade-pizzas">${pizzasLista.size()}</span></td>
 		</tr>
 		<tr>
 			<td colspan="7">
 				<button id="salvar-pizza" type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#modal-pizza">Cadastrar Pizza</button>
+					data-target="#modal-pizza"><spring:message code="view.tabela.pizza.cadastrar"/></button>
 			</td>
 		</tr>
 	</tfoot>

@@ -13,11 +13,11 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">Informações do Ingrediente</h4>
+					<h4 class="modal-title"><spring:message code="view.modal.ingrediente.titulo"/></h4>
 				</div>
 				<div class="modal-body">
-					<label for="nome">Nome: </label> <input id="nome" name="nome"class="form-control"> 
-					<label for="categoria">Categoria:</label> 
+					<label for="nome"><spring:message code="view.modal.ingrediente.nome"/>:</label><input id="nome" name="nome"class="form-control"> 
+					<label for="categoria"><spring:message code="view.modal.ingrediente.categoria"/>:</label> 
 						<select id="categoria" name="categoria" class="form-control">
 							<c:forEach items="${categorias}" var="categoria">
 								<option value="${categoria}">${categoria}</option>
@@ -27,8 +27,8 @@
 						<input id="csrf" name="_csrf" type="hidden" value="${_csrf.token}">
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					<button id="btn-salvar" type="button" class="btn btn-primary">Salvar Informações</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="view.modal.ingrediente.cancelar"/></button>
+					<button id="btn-salvar" type="button" class="btn btn-primary"><spring:message code="view.modal.ingrediente.salvar"/></button>
 				</div>
 			</form>
 		</div>
