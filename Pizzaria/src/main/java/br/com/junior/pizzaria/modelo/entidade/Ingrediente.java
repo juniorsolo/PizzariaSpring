@@ -6,6 +6,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -26,7 +28,10 @@ public class Ingrediente {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private CategoriaIngrediente categoria;
-
+    
+	@ManyToOne
+	@JoinColumn(name="DONO")
+	private Pizzaria dono;
 	
 	public Long getId() {
 		return id;

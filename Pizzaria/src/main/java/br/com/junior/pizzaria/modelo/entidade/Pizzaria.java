@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Usuario implements UserDetails{
+public class Pizzaria implements UserDetails{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,6 +27,19 @@ public class Usuario implements UserDetails{
 	private String login;
 	
 	private String senha;
+	
+	private String dataCadastro;
+	
+	private String nome;
+	
+	private String endereco;
+	
+	@ElementCollection
+	private Set<String> email;
+	
+	@ElementCollection	
+	private Set<String> telefone;
+	
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	private Set<Permissao> permissoes;
@@ -54,6 +68,46 @@ public class Usuario implements UserDetails{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}	
+	
+	public String getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(String dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public Set<String> getEmail() {
+		return email;
+	}
+
+	public void setEmail(Set<String> email) {
+		this.email = email;
+	}
+
+	public Set<String> getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(Set<String> telefone) {
+		this.telefone = telefone;
 	}
 
 	public Set<Permissao> getPermissoes() {
@@ -80,7 +134,7 @@ public class Usuario implements UserDetails{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Pizzaria other = (Pizzaria) obj;
 		if (login == null) {
 			if (other.login != null)
 				return false;
