@@ -39,7 +39,9 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter{
 		registry.addInterceptor(localeInterceptor);
 	}
 	
-	@Bean
+	
+	// O Spring procura por esse nome para o locale.
+	@Bean(name="localeResolver")
 	public LocaleResolver sessionLocaleResolver(){
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
 		resolver.setDefaultLocale(new Locale("pt_BR"));

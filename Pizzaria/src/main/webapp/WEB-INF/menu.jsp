@@ -36,7 +36,18 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 				<li><a href="pizzas"><spring:message code="view.menu.pizzas" /></a></li>
-				<li><a href="ingredientes"><spring:message code="view.menu.ingredientes" /></a></li>				
+				<li><a href="ingredientes"><spring:message code="view.menu.ingredientes" /></a></li>
+				
+				<li>
+					<a href="?lang=pt_BR">
+						<img alt="Português" src="${path}/static/img/br.png" style="height:25px">
+					</a>
+				</li>
+				<li>
+					<a href="?lang=en_US">
+						<img alt="English" src="${path}/static/img/us.png" style="height:25px">
+					</a>
+				</li>					
 	      </ul>
 
 	      <ul class="nav navbar-nav navbar-right">
