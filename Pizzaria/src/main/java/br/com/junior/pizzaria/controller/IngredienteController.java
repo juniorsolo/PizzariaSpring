@@ -21,12 +21,14 @@ import br.com.junior.pizzaria.exception.IngredienteInvalidException;
 import br.com.junior.pizzaria.modelo.entidade.Ingrediente;
 import br.com.junior.pizzaria.modelo.enun.CategoriaIngrediente;
 import br.com.junior.pizzaria.modelo.repositorio.IngredienteRepositorio;
+import br.com.junior.pizzaria.modelo.servico.ServicoPizzaria;
 
 @Controller
 //@RestController  Todos os metodos ficam responseBody
 @RequestMapping("/ingredientes")
 public class IngredienteController {
 	
+	@Autowired private ServicoPizzaria pizzariaServico;
 	@Autowired private IngredienteRepositorio ingredienteRepo;
 	
 	@RequestMapping(method=RequestMethod.GET)
@@ -46,6 +48,7 @@ public class IngredienteController {
 			BindingResult bindingResult, 
 			Model model){
 		if(!bindingResult.hasErrors()){
+			ingrediente.setDono(pizzariaServico.getPizzariaLogada());
 			ingredienteRepo.save(ingrediente);
 
 		}else{
