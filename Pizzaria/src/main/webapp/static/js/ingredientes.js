@@ -74,6 +74,7 @@ var aplicarListeners = function() {
 
 		}).always(function() {
 			$("#modal-ingrediente").modal('hide');
+			$(".in").remove();
 		});
 
 	});

@@ -72,6 +72,8 @@ var salvarListerner = function(){
 
 		}).always(function() {
 			$("#modal-pizza").modal('hide');
+			// A Ganbiarra evita que a div abaixo do modal fique apos o modal ser fechado. 
+			$(".in").remove();
 		});
 
 	});
