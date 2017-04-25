@@ -22,6 +22,7 @@ import br.com.junior.pizzaria.modelo.entidade.Pizza;
 import br.com.junior.pizzaria.modelo.enun.TamanhoPizza;
 import br.com.junior.pizzaria.modelo.repositorio.IngredienteRepositorio;
 import br.com.junior.pizzaria.modelo.repositorio.PizzaRepositorio;
+import br.com.junior.pizzaria.modelo.servico.ServicoIngrediente;
 import br.com.junior.pizzaria.propertyeditor.IngredientePropertyEditor;
 
 @Controller
@@ -32,7 +33,7 @@ public class PizzaController {
 	private PizzaRepositorio pizzaRepo;
     
 	@Autowired
-	private IngredienteRepositorio ingredienteRepo;
+	private ServicoIngrediente servicoIngrediente;
 	
 	@Autowired
 	private IngredientePropertyEditor ingredientePropertyEditor;
@@ -42,7 +43,7 @@ public class PizzaController {
 
 		model.addAttribute("tamanho", TamanhoPizza.values());
 		model.addAttribute("pizzasLista", pizzaRepo.findAll());
-		model.addAttribute("ingredientesLista", ingredienteRepo.findAll());
+		model.addAttribute("ingredientesLista", servicoIngrediente.listar());
 
 		return "pizza/listagem";
 	}
