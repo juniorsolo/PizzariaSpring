@@ -23,6 +23,7 @@ import br.com.junior.pizzaria.modelo.enun.TamanhoPizza;
 import br.com.junior.pizzaria.modelo.repositorio.IngredienteRepositorio;
 import br.com.junior.pizzaria.modelo.repositorio.PizzaRepositorio;
 import br.com.junior.pizzaria.modelo.servico.ServicoIngrediente;
+import br.com.junior.pizzaria.modelo.servico.ServicoPizza;
 import br.com.junior.pizzaria.propertyeditor.IngredientePropertyEditor;
 
 @Controller
@@ -30,7 +31,7 @@ import br.com.junior.pizzaria.propertyeditor.IngredientePropertyEditor;
 public class PizzaController {
 
 	@Autowired
-	private PizzaRepositorio pizzaRepo;
+	private ServicoPizza servicoPizza;
     
 	@Autowired
 	private ServicoIngrediente servicoIngrediente;
@@ -42,7 +43,7 @@ public class PizzaController {
 	public String listarPizzas(Model model) {
 
 		model.addAttribute("tamanho", TamanhoPizza.values());
-		model.addAttribute("pizzasLista", pizzaRepo.findAll());
+		model.addAttribute("pizzasLista", servicoPizza.listar());
 		model.addAttribute("ingredientesLista", servicoIngrediente.listar());
 
 		return "pizza/listagem";
@@ -53,13 +54,13 @@ public class PizzaController {
 			BindingResult bindResult){
 		
 		if(!bindResult.hasErrors()){
-			pizzaRepo.save(pizza);
+			servicoPizza.salvar(pizza);
 		}else{
 			throw new PizzaInvalidException();
 		}
 		
 		model.addAttribute("tamanho", TamanhoPizza.values());
-		model.addAttribute("pizzasLista", pizzaRepo.findAll());
+		model.addAttribute("pizzasLista", servicoPizza.listar());
 		
 		return"pizza/tabela-pizzas";
 	}
@@ -67,7 +68,7 @@ public class PizzaController {
 	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	public ResponseEntity<String> deletarPizza(@PathVariable Long id){
 		try {
-			pizzaRepo.delete(id);
+			servicoPizza.Remover(id);
 			return new ResponseEntity<String>(HttpStatus.OK);
 		} catch (Exception e) {
 			return  new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
@@ -77,7 +78,7 @@ public class PizzaController {
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
 	@ResponseBody
 	public Pizza  buscarPizza(@PathVariable Long id){
-		Pizza pizza = pizzaRepo.findOne(id);
+		Pizza pizza = servicoPizza.buscar(id);
 		return pizza;
 	}
 	
@@ -97,10 +98,10 @@ public class PizzaController {
 		return "Olá,  " + nome;
 	}
 
-	@RequestMapping("/numero")
-	@ResponseBody
-	public String qtd() {
-		return "Existem " + pizzaRepo.count() + " pizzas cadastradas";
-	}
+//	@RequestMapping("/numero")
+//	@ResponseBody
+//	public String qtd() {
+//		return "Existem " + servicoPizza.count() + " pizzas cadastradas";
+//	}
 
 }
