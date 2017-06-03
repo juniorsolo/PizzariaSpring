@@ -1,5 +1,7 @@
 package br.com.junior.pizzaria.modelo.servico;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,11 @@ public class ServicoPizza {
 		Pizza pizza = this.buscar(id);
 		
 		if(pizza != null) repositorio.delete(pizza);
+	}
+
+	public List<Pizza> listarTodas() {
+		
+		return repositorio.findAll();
 	}
 	
 }

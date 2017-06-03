@@ -11,9 +11,9 @@ import br.com.junior.pizzaria.modelo.entidade.Pizzaria;
 @Repository
 public interface PizzaRepositorio extends CrudRepository<Pizza, Long> {
    
-	public List<Pizza> findAllByDono(Pizzaria dono);
+	List<Pizza> findAllByDono(Pizzaria dono);
 	
-	public Pizza findByIdAndDono(Long id, Pizzaria dono);
+	Pizza findByIdAndDono(Long id, Pizzaria dono);
 	
-	public List<Pizza> findAll();
+	List<Pizza> findAll();
 }

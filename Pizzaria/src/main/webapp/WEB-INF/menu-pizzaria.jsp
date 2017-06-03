@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pizzaria - Login</title>
+<title>Pizzaria - Menu</title>
    <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
    <style type="text/css">
 	@IMPORT url("${path}/static/bootstrap-3.3.6/css/bootstrap.min.css");
