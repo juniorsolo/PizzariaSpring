@@ -1,6 +1,7 @@
 package br.com.junior.pizzaria.modelo.entidade;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class Pizzaria implements UserDetails{
 	
 	private String senha;
 	
-	private String dataCadastro;
+	private Calendar dataCadastro;
 	
 	private String nome;
 	
@@ -70,11 +71,11 @@ public class Pizzaria implements UserDetails{
 		this.senha = senha;
 	}	
 	
-	public String getDataCadastro() {
+	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(String dataCadastro) {
+	public void setDataCadastro(Calendar dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 

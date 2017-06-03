@@ -20,7 +20,7 @@ public class ServicoPizzaria {
 		Authentication autenticado = SecurityContextHolder.getContext().getAuthentication();
 		
 		if(autenticado == null){
-			throw new AuthenticationCredentialsNotFoundException("");
+			throw new AuthenticationCredentialsNotFoundException("Usuario não logado..");
 		}
 		UserDetails pizzariaLogado = (UserDetails) autenticado.getPrincipal();
 		return pizzariaRepo.findOneByLogin(pizzariaLogado.getUsername());

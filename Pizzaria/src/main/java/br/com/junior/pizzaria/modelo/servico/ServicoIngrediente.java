@@ -32,7 +32,7 @@ public class ServicoIngrediente {
 		return repositorio.findByIdAndDono(id, dono);
 	}
 	
-	public void Remover(Long id){
+	public void remover(Long id){
 		Ingrediente ingrediente = this.buscar(id);
 		
 		if(ingrediente != null) repositorio.delete(ingrediente);
