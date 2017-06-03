@@ -26,11 +26,20 @@ var aplicarListeners = function() {
 		var url = "pizzas/"+id;
 		
 		$.get(url).success(function(pizza){
-				$("#id").val(pizza.id);
-				$("#nome").val(pizza.nome);
-				$("#preco").val(pizza.preco);
-				$("#tamanho").val(pizza.tamanho);
-				$("#modal-pizza").modal('show');
+			var idIngredientes = [];
+			
+			if(pizza.ingredientes.length > 0){
+				for(var i= 0; i < pizza.ingredientes.length; i ++){
+					idIngredientes.push(pizza.ingredientes[i].id);
+				}
+			}
+			
+			$("#id").val(pizza.id);
+			$("#nome").val(pizza.nome);
+			$("#preco").val(pizza.preco);
+			$("#tamanho").val(pizza.tamanho);
+			$("#ingredientes").val(idIngredientes);
+			$("#modal-pizza").modal('show');
 			
 		});
 	});
@@ -71,9 +80,9 @@ var salvarListerner = function(){
 			alert('erro ao salvar');
 
 		}).always(function() {
-			$("#modal-pizza").modal('hide');
 			// A Ganbiarra evita que a div abaixo do modal fique apos o modal ser fechado. 
-			$(".in").remove();
+			$(".modal-backdrop").remove();
+			$("#modal-pizza").modal('hide');
 		});
 
 	});

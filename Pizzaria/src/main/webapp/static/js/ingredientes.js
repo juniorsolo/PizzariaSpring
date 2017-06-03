@@ -13,7 +13,6 @@ var limparModal = function(){
 }
 
 var removerListerners = function(){
-	$("#modal-ingrediente").off('hide.bs.modal', limparModal);
 	$(".btn-editar").off("click");
 	$(".btn-deletar").off("click");
 	$("#btn-salvar").off("click"); 
@@ -68,13 +67,15 @@ var aplicarListeners = function() {
 			$("#sessao-ingredientes").html(pagina);
 			removerListerners();
 			aplicarListeners();
+			
 
 		}).fail(function() {
 			alert('erro ao salvar');
 
 		}).always(function() {
-			$("#modal-ingrediente").modal('hide');
-			$(".in").remove();
+			$(".modal-backdrop").remove();
+			$("#modal-ingrediente").modal().hide();
+			
 		});
 
 	});
