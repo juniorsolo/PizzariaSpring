@@ -41,8 +41,8 @@ public class ServicoPizza {
 	}
 
 	public List<Pizza> listarTodas() {
-		
-		return repositorio.findAll();
+		List<Pizza> lista = repositorio.findAll(); 
+		return lista;
 	}
 	
 }
