@@ -27,7 +27,7 @@
 						<label for="pizza_pesquisa">Que pizza você quer hoje?</label> 
 						<select id="pizza_pesquisa" class="form-control">
 							<c:forEach items="${pizzasLista}" var="pizza">
-								<option value="${pizza.id}">${pizza.nome}</option>
+								<option value="${pizza.nome}">${pizza.nome}</option>
 							</c:forEach>
 						</select>
 					</div>

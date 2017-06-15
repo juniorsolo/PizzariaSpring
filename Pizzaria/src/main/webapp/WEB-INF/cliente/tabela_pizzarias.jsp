@@ -10,15 +10,20 @@
 	<thead>
 		<tr>
 			<td style="width:10%">#</td>
-			
+			<td style="width:10%">Nome</td>
+			<td style="width:30%">Endereco</td>
+			<td style="width:20%">Atendendo desde</td>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${pizzasLista}" var="pizza">
-			<tr data-id="${pizza.id}">
-				<td>${pizza.id}</td>
-
+		<c:forEach items="${pizzarias}" var="pizzaria">
+			<tr>
+				<td>${pizzaria.id}</td>
+				<td>${pizzaria.nome}</td>
+				<td>${pizzaria.endereco}</td>
+				<td><fmt:formatDate value="${pizzaria.dataCadastro.time}" pattern="dd/MM/yyyy"></fmt:formatDate></td>
 			</tr>
+
 		</c:forEach>
 	</tbody>
 	<tfoot>
