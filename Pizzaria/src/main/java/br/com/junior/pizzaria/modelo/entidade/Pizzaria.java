@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -45,7 +46,8 @@ public class Pizzaria implements UserDetails{
 	@ManyToMany(fetch=FetchType.EAGER)
 	private Set<Permissao> permissoes;
 
-	
+	@OneToMany(mappedBy = "dono")
+	private Set<Pizza> pizzas;
 	
 	public Long getId() {
 		return id;
@@ -117,6 +119,14 @@ public class Pizzaria implements UserDetails{
 
 	public void setPermissoes(Set<Permissao> permissoes) {
 		this.permissoes = permissoes;
+	}
+
+	public Set<Pizza> getPizzas() {
+		return pizzas;
+	}
+
+	public void setPizzas(Set<Pizza> pizzas) {
+		this.pizzas = pizzas;
 	}
 
 	@Override

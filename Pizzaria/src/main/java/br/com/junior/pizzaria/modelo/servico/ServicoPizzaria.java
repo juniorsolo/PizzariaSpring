@@ -28,7 +28,7 @@ public class ServicoPizzaria {
 		return pizzariaRepo.findOneByLogin(pizzariaLogado.getUsername());
 	}
 
-	@Autowired
+	
 	public List<Pizzaria> listarPizzariaQueContemPizza(String nomePizza) {
 		 return pizzariaRepo.listarPizzariaPorNomePizza(nomePizza);		
 	}
