@@ -26,12 +26,10 @@ public class Pizzaria implements UserDetails{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String login;
-	
-	private String senha;
-	
 	private Calendar dataCadastro;
 	
+	private Usuario usuario;
+
 	private String nome;
 	
 	private String endereco;
@@ -56,22 +54,6 @@ public class Pizzaria implements UserDetails{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}	
 	
 	public Calendar getDataCadastro() {
 		return dataCadastro;
@@ -79,6 +61,14 @@ public class Pizzaria implements UserDetails{
 
 	public void setDataCadastro(Calendar dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getNome() {
@@ -133,7 +123,7 @@ public class Pizzaria implements UserDetails{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((getUsuario().getLogin() == null) ? 0 : getUsuario().getLogin().hashCode());
 		return result;
 	}
 
@@ -146,10 +136,10 @@ public class Pizzaria implements UserDetails{
 		if (getClass() != obj.getClass())
 			return false;
 		Pizzaria other = (Pizzaria) obj;
-		if (login == null) {
-			if (other.login != null)
+		if (getUsuario().getLogin() == null) {
+			if (other.getUsuario().getLogin() != null)
 				return false;
-		} else if (!login.equals(other.login))
+		} else if (!getUsuario().getLogin().equals(other.getUsuario().getLogin()))
 			return false;
 		return true;
 	}
@@ -167,12 +157,12 @@ public class Pizzaria implements UserDetails{
 
 	@Override
 	public String getPassword() {
-		return getSenha();
+		return getUsuario().getSenha();
 	}
 
 	@Override
 	public String getUsername() {
-		return getLogin();
+		return getUsuario().getLogin();
 	}
 
 	@Override
